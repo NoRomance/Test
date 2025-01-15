@@ -1,121 +1,17 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionnaire Santé</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Questionnaire Santé</h1>
-        <form id="quizForm">
-            <div class="question">
-                <p>Question 1 : Quel est votre objectif principal ?</p>
-                <label><input type="radio" name="q1" value="perte_de_poids"> Perte de poids</label><br>
-                <label><input type="radio" name="q1" value="prise_de_masse"> Prise de masse</label><br>
-                <label><input type="radio" name="q1" value="sante_generale"> Santé générale</label>
-            </div>
-            <div class="question">
-                <p>Question 2 : Combien de fois faites-vous de l'exercice par semaine ?</p>
-                <label><input type="radio" name="q2" value="rarement"> Rarement</label><br>
-                <label><input type="radio" name="q2" value="modere"> 2-3 fois</label><br>
-                <label><input type="radio" name="q2" value="intensif"> 4 fois ou plus</label>
-            </div>
-            <div class="question">
-                <p>Question 3 : Combien de portions de fruits et légumes consommez-vous par jour ?</p>
-                <label><input type="radio" name="q3" value="peu"> 1-2 portions</label><br>
-                <label><input type="radio" name="q3" value="modere"> 3-4 portions</label><br>
-                <label><input type="radio" name="q3" value="beaucoup"> 5 portions ou plus</label>
-            </div>
-            <div class="question">
-                <p>Question 4 : Dormez-vous suffisamment la nuit ?</p>
-                <label><input type="radio" name="q4" value="rarement"> Rarement</label><br>
-                <label><input type="radio" name="q4" value="parfois"> Parfois</label><br>
-                <label><input type="radio" name="q4" value="toujours"> Toujours</label>
-            </div>
-            <div class="question">
-                <p>Question 5 : À quelle fréquence buvez-vous de l'eau ?</p>
-                <label><input type="radio" name="q5" value="rarement"> Rarement</label><br>
-                <label><input type="radio" name="q5" value="modere"> Modérément</label><br>
-                <label><input type="radio" name="q5" value="frequent"> Fréquemment</label>
-            </div>
-            <div class="question">
-                <p>Question 6 : Fumez-vous ?</p>
-                <label><input type="radio" name="q6" value="oui"> Oui</label><br>
-                <label><input type="radio" name="q6" value="non"> Non</label>
-            </div>
-            <div class="question">
-                <p>Question 7 : Consommez-vous souvent des aliments transformés ?</p>
-                <label><input type="radio" name="q7" value="souvent"> Souvent</label><br>
-                <label><input type="radio" name="q7" value="parfois"> Parfois</label><br>
-                <label><input type="radio" name="q7" value="rarement"> Rarement</label>
-            </div>
-            <div class="question">
-                <p>Question 8 : Faites-vous régulièrement des check-ups médicaux ?</p>
-                <label><input type="radio" name="q8" value="oui"> Oui</label><br>
-                <label><input type="radio" name="q8" value="non"> Non</label>
-            </div>
-            <div class="question">
-                <p>Question 9 : Avez-vous des allergies alimentaires ?</p>
-                <label><input type="radio" name="q9" value="oui"> Oui</label><br>
-                <label><input type="radio" name="q9" value="non"> Non</label>
-            </div>
-            <div class="question">
-                <p>Question 10 : Pratiquez-vous des techniques de gestion du stress (ex : méditation) ?</p>
-                <label><input type="radio" name="q10" value="oui"> Oui</label><br>
-                <label><input type="radio" name="q10" value="non"> Non</label>
-            </div>
-            <div class="question">
-                <p>Question 11 : Quelle est votre consommation de café ou de thé ?</p>
-                <label><input type="radio" name="q11" value="faible"> Faible</label><br>
-                <label><input type="radio" name="q11" value="moderee"> Modérée</label><br>
-                <label><input type="radio" name="q11" value="elevee"> Élevée</label>
-            </div>
-            <div class="question">
-                <p>Question 12 : Faites-vous des activités en plein air régulièrement ?</p>
-                <label><input type="radio" name="q12" value="oui"> Oui</label><br>
-                <label><input type="radio" name="q12" value="non"> Non</label>
-            </div>
-            <div class="question">
-                <p>Question 13 : Avez-vous un régime alimentaire spécifique (végétarien, végan, etc.) ?</p>
-                <label><input type="radio" name="q13" value="oui"> Oui</label><br>
-                <label><input type="radio" name="q13" value="non"> Non</label>
-            </div>
-            <div class="question">
-                <p>Question 14 : Combien de temps passez-vous devant un écran chaque jour ?</p>
-                <label><input type="radio" name="q14" value="peu"> Moins de 2 heures</label><br>
-                <label><input type="radio" name="q14" value="modere"> 2-4 heures</label><br>
-                <label><input type="radio" name="q14" value="beaucoup"> Plus de 4 heures</label>
-            </div>
-            <div class="question">
-                <p>Question 15 : Consommez-vous régulièrement des suppléments alimentaires ?</p>
-                <label><input type="radio" name="q15" value="oui"> Oui</label><br>
-                <label><input type="radio" name="q15" value="non"> Non</label>
-            </div>
-            <button type="button" id="submitQuiz">Voir les résultats</button>
-        </form>
-        <div id="result"></div>
-    </div>
+document.getElementById("submitQuiz").addEventListener("click", () => {
+    const form = document.getElementById("quizForm");
+    const responses = [];
+    for (let i = 1; i <= 15; i++) {
+        responses.push(form[`q${i}`]?.value || "");
+    }
 
-    <script>
-        document.getElementById("submitQuiz").addEventListener("click", () => {
-            const form = document.getElementById("quizForm");
-            const responses = [];
-            for (let i = 1; i <= 15; i++) {
-                responses.push(form[`q${i}`]?.value || "");
-            }
+    let result = "";
 
-            let result = "";
+    if (responses.includes("")) {
+        result = "Veuillez répondre à toutes les questions pour obtenir un résultat.";
+    } else {
+        result = "Merci d'avoir complété le questionnaire. Vos réponses sont : " + responses.join(", ");
+    }
 
-            if (responses.includes("")) {
-                result = "Veuillez répondre à toutes les questions pour obtenir un résultat.";
-            } else {
-                result = "Merci d'avoir complété le questionnaire. Vos réponses sont : " + responses.join(", ");
-            }
-
-            document.getElementById("result").innerText = result;
-        });
-    </script>
-</body>
-</html>
+    document.getElementById("result").innerText = result;
+});
